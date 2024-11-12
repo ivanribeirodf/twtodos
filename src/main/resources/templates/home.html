@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<body>
+	<h3>Home</h3>
+	<p th:text="${nome}">Teste</p>
+	<p>###################</p>
+	<ul>
+		<li th:each="aluno : ${alunos}" th:text="${aluno}"></li>
+	</ul>
+	<p>###################</p>
+	<p th:if="${ehProgramador}">A variável ehProgramador está true</p>
+</body>
+</html>
