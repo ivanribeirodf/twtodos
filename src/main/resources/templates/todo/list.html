@@ -20,7 +20,7 @@
 	<main class="container">
 		<h1>Lista de tarefas</h1>
 		
-		<table class="table">
+		<table class="table" th:unless="${#lists.isEmpty(todos)}">
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
@@ -33,11 +33,11 @@
 		  </thead>
 		  <tbody>
 		    <tr th:each="todo:${todos}">
-		      <th scope="row" th:text="${todo.id}">1</th>
-		      <td th:text="${todo.title}">Mark</td>
-		      <td th:text="${todo.createAt}">Otto</td>
-		      <td th:text="${todo.deadLine}">@mdo</td>
-			  <td th:text="${todo.fineshedAt}">@mdo</td>
+		      <th scope="row" th:text="${todo.id}">Id da tarefa</th>
+		      <td th:text="${todo.title}">Título da tarefa</td>
+		      <td th:text="${#temporals.format(todo.createAt)}">Creação</td>
+		      <td th:text="${#temporals.format(todo.deadLine)}">Entrega</td>
+			  <td th:text="${#temporals.format(todo.fineshedAt)} ?: '-'">Finalização</td>
 			  <td>
 				<a href="" class="btn btn-sm btn-success"><span><i class="bi bi-check-lg"></i></span> Concluir</a>
 				<a href="" class="btn btn-sm btn-primary"><span><i class="bi bi-pencil"></i></span> Editar</a>
@@ -47,6 +47,10 @@
 		    </tr>
 		  </tbody>
 		</table>
+		
+		<p th:if="${#lists.isEmpty(todos)}">Nenhuma tarefa cadastrada!</p>
+		
+		<a th:href="@{/create}" class="btn btn-sm btn-primary"><span><i class="bi bi-plus-lg"></i></span>Nova Tarefa</a>
 	</main>
 	
 	
