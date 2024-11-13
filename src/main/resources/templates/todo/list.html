@@ -40,7 +40,7 @@
 			  <td th:text="${#temporals.format(todo.fineshedAt)} ?: '-'">Finalização</td>
 			  <td>
 				<a href="" class="btn btn-sm btn-success"><span><i class="bi bi-check-lg"></i></span> Concluir</a>
-				<a href="" class="btn btn-sm btn-primary"><span><i class="bi bi-pencil"></i></span> Editar</a>
+				<a th:href="@{/edit/{id}(id=${todo.id})}" class="btn btn-sm btn-primary"><span><i class="bi bi-pencil"></i></span> Editar</a>
 				<a href="" class="btn btn-sm btn-danger"><span><i class="bi bi-x"></i></span> Excluir</a>
 				
 			  </td>

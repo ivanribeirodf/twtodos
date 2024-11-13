@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +27,7 @@ public class Todo {
 	private LocalDateTime createAt;
 	
 	@Column(nullable = false)
+	//@DateTimeFormat(iso = ISO.DATE)	
 	private LocalDate deadLine ;
 	
 	@Column(nullable = true)
