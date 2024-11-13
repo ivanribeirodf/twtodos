@@ -62,9 +62,13 @@ public class TodoController {
 		if(todo.isEmpty()) {
 			throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		return new ModelAndView("todos/delete",Map.of("todo",todo.get()));
+		return new ModelAndView("todo/delete",Map.of("todo",todo.get()));
 	}
 			
-
+	@PostMapping("/delete/{id}")
+	public String delete(Todo todo) {
+		todoRepository.delete(todo);
+		return "redirect:/";
+	}
 	
 }
