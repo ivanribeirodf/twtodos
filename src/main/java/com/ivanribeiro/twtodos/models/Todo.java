@@ -7,11 +7,15 @@ import java.util.Objects;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Todo {
@@ -20,14 +24,18 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@NotBlank
+	@Size(min = 3, max = 100)
+	@Column(length = 100, nullable = false)
 	private String title;
 	
 	@Column(nullable = false)
 	private LocalDateTime createAt;
 	
+	@NonNull
+	@FutureOrPresent
 	@Column(nullable = false)
-	//@DateTimeFormat(iso = ISO.DATE)	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")	
 	private LocalDate deadLine ;
 	
 	@Column(nullable = true)

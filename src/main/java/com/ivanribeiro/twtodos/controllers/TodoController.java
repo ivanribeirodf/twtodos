@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ivanribeiro.twtodos.models.Todo;
 import com.ivanribeiro.twtodos.repositories.TodoRepository;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class TodoController {
 	
@@ -36,7 +38,7 @@ public class TodoController {
 	}
 	
 	@PostMapping("/create")
-	public String create(Todo todo) {
+	public String create(@Valid Todo todo) {
 		todoRepository.save(todo);
 		return "redirect:/";
 	}
@@ -51,7 +53,7 @@ public class TodoController {
 	}
 	
 	@PostMapping("/edit/{id}")
-	public String edit(Todo todo) {
+	public String edit(@Valid Todo todo) {
 		todoRepository.save(todo);
 		return "redirect:/";
 	}
